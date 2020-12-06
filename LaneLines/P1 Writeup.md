@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./test_results/grayscale.png "Grayscale"
-[image1]: ./test_results/gaussian.png "Gaussian"
+[image2]: ./test_results/gaussian.png "Gaussian"
 [image3]: ./test_results/canny.png "Canny"
 [image4]: ./test_results/hough.png "Hough"
 [image5]: ./test_results/findlanes.png "Findlanes"
@@ -30,20 +30,25 @@ The goals / steps of this project are the following:
 The code is in the "Pipeline for finding lanes" section, which consisted of 5 steps. 
 
 1. I created a copy of the image and converted it to grayscale.
+
 ![Grayscale][image1]
 
-2. I applied a gaussian smoothing to the grayscale image with a kernal size of 5. 
+2. I applied a gaussian smoothing to the grayscale image with a kernal size of 5.
+
 ![Gaussian][image2]
 
 3. The Canny function was applied to the guassian smoothed image to fine the edges within the defined low and high thresholds. 
+
 ![Canny][image3]
 
 4. A mask was created to only look for the lines in the region of interests. 
 
 5. Hough transformation was applied to the edge image with the mask of region of interests. 
+
 ![Hough][image4]
 
-6. In order to draw a single line on the left and right lanes, I created an extrapolate_lanes() function to seperate left lanes from the right lanes using the slopes calculated from the lines identified from the Hough transformation. To remove some noise and lines from shadows, I only looked for the lines with certain slopes. Once the slopes were calculated, the line euqitons y = m*x + b were defined for both the left and right lanes. 
+6. In order to draw a single line on the left and right lanes, I created an extrapolate_lanes() function to seperate left lanes from the right lanes using the slopes calculated from the lines identified from the Hough transformation. To remove some noise and lines from shadows, I only looked for the lines with certain slopes. Once the slopes were calculated, the line euqitons y = m*x + b were defined for both the left and right lanes.
+
 ![Findlanes][image5]
 
 
