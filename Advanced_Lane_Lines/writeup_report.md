@@ -19,7 +19,7 @@ In this project, a pipeline was programmed to identify the lane lines in the giv
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Color Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
+[video1]: ./project_video_solution.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -134,26 +134,16 @@ The lane lines and their boundaries are identified and overlaid back to the orig
 
 ### Pipeline (video)
 
+The code for this step is contained in the "Step 9: Run pipeline in a video" code cell of the IPython notebook located in "./Advanced Lane Finding Project.ipynb".
+
 All the funtions from the image pipeline have been wrapped in a Class `ProcessImage`. Each frame of the video will be processed to identify the lane lines. 
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_solution.mp4)
 
 ---
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Nevertheless, there is still some room for improvements in the `ProcessImage` class:
-
-- Keep track of the last several detections of the lane lines were and what the curvature was, so it can properly be treated new detections:
-- Perform some sanity checks to confirm that the detected lane lines are real:
-  - Checking that they have similar curvature,
-  - Checking that they are separated by approximately the right distance horizontally,
-  - Checking that they are roughly parallel.
-- Smoothing:
-  - Even when everything is working, line detections will jump around from frame to frame a bit and it can be preferable to smooth over the last n frames of video to obtain a cleaner result. Each time a new high-confidence measurement is calculated, it can be appended  to the list of recent measurements and then take an average over n past measurements to obtain the lane position to draw onto the image. 
-
-I will implement these changes in the future, but I am running out of time to complete term 1, so I have decided to leave them for the next weeks.
-
-Finally, the pipeline might fall if a white car is too close to the left or right lanes, and also when a white car is in front of our car and quite close to us.
+Overall, the pipeline works well. However, at certain curvature of the lanes, the pipeline identified the wrong curvature and generate misleading polynominal fitting of the lanes. Increase the margin value in the lane detection function may resolve this issue. 
