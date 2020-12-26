@@ -13,13 +13,13 @@ In this project, a pipeline was programmed to identify the lane lines in the giv
 
 [//]: # (Image References)
 
-[image1]: ./examples/undistort_output.png "Undistorted"
+[image1]: ./output_images/undistort_output.png "Undistorted"
 [image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Combined Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Color Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video_solution.mp4 "Video"
+[image3]: ./output_images/binary_combo_example.jpg "Combined Binary Example"
+[image4]: ./output_images/warped_straight_lines.jpg "Warp Example"
+[image5]: ./output_images/color_fit_lines.jpg "Color Fit Visual"
+[image6]: ./output_images/example_output.jpg "Output"
+[video1]: ./output_images/project_video_solution.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -71,30 +71,30 @@ Here's an example of my output for this step.
 
 The code for my perspective transform includes a function called `warp()`, which appears in lines 2 through 28 in the "Step 4: Apply a perspective transform to rectify binary image ("birds-eye view")" code cell of the IPython notebook located in "./Advanced Lane Finding Project.ipynb".
 
-The `warp()` function takes as inputs an image (`img`), as well as source (`src_coordinates`) and destination (`dst_coordinates`) points. I chose the hardcode the source and destination points in the following manner:
+The `warp()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points. I chose the hardcode the source and destination points in the following manner:
 
 ```python
-    src_coordinates = np.float32(
-            [[280,  700],  # Bottom left
-             [595,  460],  # Top left
-             [725,  460],  # Top right
-             [1125, 700]]) # Bottom right
+    src = np.float32(
+            [[270,  690],  # Bottom left
+             [535,  490],  # Top left
+             [785,  490],  # Top right
+             [1125, 690]]) # Bottom right
 
-    dst_coordinates = np.float32(
+    dst = np.float32(
             [[250,  720],  # Bottom left
              [250,    0],  # Top left
-             [1065,   0],  # Top right
-             [1065, 720]]) # Bottom right 
+             [1050,   0],  # Top right
+             [1050, 720]]) # Bottom right 
 ```
 
 This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 280, 700      | 250, 0        | 
-| 595, 460      | 250, 720      |
-| 1125, 460     | 1065, 0       |
-| 725, 700      | 1065, 720     |
+| 270, 690      | 250, 720      | 
+| 535, 460      | 250, 0        |
+| 785, 460      | 1050, 0       |
+| 1125, 690     | 1050, 720     |
 
 I verified that my perspective transform was working as expected by drawing the `src_coordinates` and `dst_coordinates` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
