@@ -138,7 +138,7 @@ The code for this step is contained in the "Step 9: Run pipeline in a video" cod
 
 All the funtions from the image pipeline have been wrapped in a Class `ProcessImage`. Each frame of the video will be processed to identify the lane lines. 
 
-Here's a [link to my video result](./project_video_solution.mp4)
+Here's a [link to my video result][video1]
 
 ---
 
